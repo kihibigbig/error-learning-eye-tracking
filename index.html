@@ -1,0 +1,11 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>エラー学習ツールの視線計測デモ</title><link rel="stylesheet" href="style.css">
+<header><strong>エラー学習ツールの視線計測デモ</strong><span id="phase">開始前</span><button id="end" disabled>終了してJSON保存</button></header>
+<main id="intro"><h1>資料のどこを参照したかを調べる</h1><p>短い調整と領域判別の確認後、コード・エラーメッセージ・学習ツールの図を表示します。推定した視線位置と、参照領域の手掛かりを確認する予備デモです。</p><p>初期調整と確認を1分程度にすることを目標にした簡略版です。機器による所要時間と精度は今後確認します。初回は顔検出モデルの取得に時間がかかる場合があります。</p><p>カメラ映像・眼の画像は録画・送信しません。推定座標、領域、回答、時間をブラウザ内に保持し、終了時にJSONを保存します。顔検出モデルとライブラリ関連の取得には通信を行います。氏名は入力しません。</p><p>視線が領域に入ったことは、資料の理解や教育効果を直接示しません。正式な被験者実験の前に、領域判別の精度と実験手順を確認するためのデモです。</p><button id="start">カメラを開始する</button><a href="?preview=1">カメラなしで画面を見る</a></main>
+<div id="board" hidden><section id="code" class="region"><h2>ソースコード</h2><pre>scores = {"math": 90, "english": 85, "science": 78}
+print(scores["history"])</pre></section><section id="error" class="region"><h2>エラーメッセージ</h2><pre>Traceback (most recent call last):
+  File "main.py", line 2, in &lt;module&gt;
+    print(scores["history"])
+KeyError: 'history'</pre></section><section id="tool" class="region"><h2>学習ツールの図と解説</h2><img src="assets/diagram_keyerror.png" alt="KeyErrorに関するレーン付きアクティビティ図"><p>辞書 scores にキー history は存在しません。存在するキーは math，english，science です。</p></section></div>
+<footer id="reading" hidden><span id="gaze-state">推定参照領域：未取得</span><label><input type="checkbox" id="show-gaze" checked>推定点を表示</label><p id="quality"></p><p>エラーの原因は？ <button data-answer="missing-key">存在しないキーを参照した</button><button data-answer="undefined-variable">未定義の変数を使った</button></p><p id="answer-state">回答は未記録です</p></footer>
+<div id="target" hidden></div><div id="gaze" hidden></div>
+<script>window.saveDataAcrossSessions=false;</script><script src="vendor/webgazer-calibration.js"></script><script src="app.js"></script></html>

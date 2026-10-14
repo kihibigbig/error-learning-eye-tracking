@@ -1,0 +1,7 @@
+{
+  "upstream_file": "../lib/webgazer.js",
+  "upstream_sha256": "65840eaae573c10c1d015b432b447c04607bb2d709be6302482c0e7582975dde",
+  "patched_sha256": "1306bd73ee4474e9d342152076cd2f3443334321e78dbeac6fec450ae837c7b6",
+  "modification": "Add explicit recordCalibrationPoint and getCalibrationState; upstream APIs unchanged; GPL-3.0 retained",
+  "date": "2026-10-02"
+}
